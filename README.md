@@ -9,9 +9,10 @@ This example uses the [Connexion](https://github.com/zalando/connexion) library 
 
 ## Requirements
 Python 3.5.2+
+MongoDB
 
 ## Usage
-To run the server, please execute the following from the root directory:
+To run the server, make sure you have a MongoDB instance running locally on port 27017 and please execute the following from the root directory:
 
 ```
 pip3 install -r requirements.txt
