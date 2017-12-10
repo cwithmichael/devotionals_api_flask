@@ -42,7 +42,8 @@ To run the server on a Docker container, please execute the following from the r
 ```bash
 # building the image
 docker build -t swagger_server .
-
+docker pull mongo:latest
 # starting up a container
-docker run -p 8080:8080 swagger_server
+docker run --name devotionals_mongo -p 27017:27017  -d mongo
+docker run --rm --name devotionals_api --link devotionals_mongo:localhost -p 8080:8080 swagger_server
 ```
