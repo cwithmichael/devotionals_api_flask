@@ -4,6 +4,8 @@ python:
   - "3.6"
   #- "3.5-dev" # 3.5 development branch
   #- "nightly" # points to the latest development branch e.g. 3.6-dev
+services:
+          - mongodb
 # command to install dependencies
 install: 
         - pip install -r requirements.txt
