@@ -8,11 +8,12 @@ is an example of building a swagger-enabled Flask server.
 This example uses the [Connexion](https://github.com/zalando/connexion) library on top of Flask.
 
 ## Requirements
-Python 3.5.2+. 
+Python 3.5.2+
+
 MongoDB
 
 ## Usage
-To run the server, make sure you have a MongoDB instance running locally on port 27017   and please execute the following from the root directory:
+To run the server, make sure you have a MongoDB instance running locally on port 27017 and please execute the following from the root directory:
 
 ```
 pip3 install -r requirements.txt
