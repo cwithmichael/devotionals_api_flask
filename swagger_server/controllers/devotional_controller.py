@@ -4,7 +4,6 @@ from swagger_server.models.devotional import Devotional
 from datetime import date, datetime
 from typing import List, Dict
 from six import iteritems
-from bson.json_util import dumps, loads
 import json
 from ..util import deserialize_date, deserialize_datetime
 from ..db import DevotionalDataStore

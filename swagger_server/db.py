@@ -10,7 +10,8 @@ class DevotionalDataStore():
         self.db = self.client['dev_db']
 
     def add_devotional(self, devotional):
-        devotional.publishDate = datetime.datetime.utcnow()
+        if 'publishDate' in devotional:
+            devotional['publishDate'] = datetime.datetime.utcnow()
         devotional_id = self.db.devotionals.insert_one(devotional).inserted_id
         return dumps(devotional_id)
 

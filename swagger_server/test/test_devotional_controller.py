@@ -11,6 +11,8 @@ from flask import json
 
 class TestDevotionalController(BaseTestCase):
     """ DevotionalController integration test stubs """
+    def setUp(self):
+        self.devotionalId = '5a2cadcbf28892b469e93490'
 
     def test_add_devotional(self):
         """
@@ -23,7 +25,7 @@ class TestDevotionalController(BaseTestCase):
                                     method='POST',
                                     data=json.dumps(body),
                                     content_type='application/json')
-        self.assert200(response, "Response body is : " + response.data.decode('utf-8'))
+        assert response.status_code == 201, "Response body is : " + response.data.decode('utf-8')
 
     def test_delete_devotional(self):
         """
@@ -32,7 +34,7 @@ class TestDevotionalController(BaseTestCase):
         Deletes a devotional
         """
         headers = [('api_key', 'api_key_example')]
-        response = self.client.open('/api/v1/devotionals/{devotionalId}'.format(devotionalId=789),
+        response = self.client.open('/api/v1/devotionals/{devotionalId}'.format(devotionalId=self.devotionalId),
                                     method='DELETE',
                                     headers=headers)
         self.assert200(response, "Response body is : " + response.data.decode('utf-8'))
@@ -55,7 +57,7 @@ class TestDevotionalController(BaseTestCase):
 
         Find devotional by ID
         """
-        response = self.client.open('/api/v1/devotionals/{devotionalId}'.format(devotionalId=789),
+        response = self.client.open('/api/v1/devotionals/{devotionalId}'.format(devotionalId=self.devotionalId),
                                     method='GET')
         self.assert200(response, "Response body is : " + response.data.decode('utf-8'))
 
@@ -76,25 +78,11 @@ class TestDevotionalController(BaseTestCase):
         Update an existing devotional
         """
         body = Devotional()
-        response = self.client.open('/api/v1/devotionals',
+        response = self.client.open('/api/v1/devotionals/{devotionalId}'.format(devotionalId=self.devotionalId),
                                     method='PUT',
                                     data=json.dumps(body),
                                     content_type='application/json')
-        self.assert200(response, "Response body is : " + response.data.decode('utf-8'))
-
-    def test_update_devotional_with_form(self):
-        """
-        Test case for update_devotional_with_form
-
-        Updates a devotional in the datastore with form data
-        """
-        data = dict(name='name_example',
-                    status='status_example')
-        response = self.client.open('/api/v1/devotionals/{devotionalId}'.format(devotionalId=789),
-                                    method='POST',
-                                    data=data,
-                                    content_type='application/x-www-form-urlencoded')
-        self.assert200(response, "Response body is : " + response.data.decode('utf-8'))
+        assert response.status_code == 201, "Response body is : " + response.data.decode('utf-8')
 
     def test_upload_file(self):
         """
@@ -104,7 +92,7 @@ class TestDevotionalController(BaseTestCase):
         """
         data = dict(additionalMetadata='additionalMetadata_example',
                     file=(BytesIO(b'some file data'), 'file.txt'))
-        response = self.client.open('/api/v1/devotionals/{devotionalId}/uploadImage'.format(devotionalId=789),
+        response = self.client.open('/api/v1/devotionals/{devotionalId}/uploadImage'.format(devotionalId=self.devotionalId),
                                     method='POST',
                                     data=data,
                                     content_type='multipart/form-data')
