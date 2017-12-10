@@ -30,7 +30,7 @@ Your Swagger definition lives here:
 http://localhost:8080/api/v1/swagger.json
 ```
 
-To run tests
+To run the tests
 ```
 python setup.py test
 ```
