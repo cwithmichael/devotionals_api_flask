@@ -16,8 +16,10 @@ MongoDB
 To run the server, make sure you have a MongoDB instance running locally on port 27017 and please execute the following from the root directory:
 
 ```
-pip3 install -r requirements.txt
-python3 -m swagger_server
+python3 -m venv venv
+source /venv/bin/activate
+pip install -r requirements.txt
+python -m swagger_server
 ```
 
 and open your browser to here:
@@ -32,10 +34,9 @@ Your Swagger definition lives here:
 http://localhost:8080/api/v1/swagger.json
 ```
 
-To launch the integration tests, use tox:
+To run tests
 ```
-sudo pip install tox
-tox
+python setup.py test
 ```
 
 ## Running with Docker
