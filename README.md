@@ -13,7 +13,8 @@ To run the server, make sure you have a MongoDB instance running locally on port
 
 ```
 python3 -m venv venv
-source /venv/bin/activate
+source venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
 python -m swagger_server
 ```
