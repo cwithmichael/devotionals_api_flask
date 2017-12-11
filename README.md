@@ -33,7 +33,7 @@ http://localhost:8080/api/v1/swagger.json
 
 To run the tests
 ```
-python setup.py test
+tox
 ```
 
 ## Running with Docker
