@@ -8,9 +8,6 @@ Python 3.5.3+
 
 MongoDB
 
-## Note
-We must use an older version of pip due to a bug in the bson module : https://github.com/py-bson/bson/issues/77
-
 
 ## Usage
 To run the server, make sure you have a MongoDB instance running locally on port 27017 and please execute the following from the root directory:
@@ -18,8 +15,7 @@ To run the server, make sure you have a MongoDB instance running locally on port
 ```
 python3 -m venv venv
 source venv/bin/activate
-~~pip install --upgrade pip~~
-python -m pip install -U 'pip>=9,<10'
+pip install --upgrade pip
 pip install -r requirements.txt
 python -m swagger_server
 ```
